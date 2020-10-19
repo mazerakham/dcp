@@ -53,6 +53,11 @@ public class Puzzle8GraphSearch {
       Puzzle8Move nextMove = queue.remove();
 
     }
+    return backtrack();
+  }
+
+  private List<Puzzle8Move> backtrack() {
+    throw new UnsupportedOperationException();
   }
 
 }
