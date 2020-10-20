@@ -86,9 +86,7 @@ public class Puzzle8GraphSearch {
       ret.add(edge);
       current = edge.a;
     }
-    ret = ret.reverse();
-    ret.forEach(Edge::prettyPrint);
-    return ret;
+    return ret.reverse();
   }
 
 }
