@@ -1,5 +1,7 @@
 package dailycodingproblem.puzzle8;
 
+import static ox.util.Functions.map;
+
 import java.util.List;
 
 import com.google.common.base.Objects;
@@ -58,13 +60,32 @@ public class Puzzle8 {
     if (!(o instanceof Puzzle8)) {
       return false;
     } else {
-      return Objects.equal(this.hashCode(), o.hashCode());
+      return this.toString().equals(o.toString());
     }
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(this.toString());
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append('{');
+    for (int i = 0; i < 3; i++) {
+      int[] row = grid[i];
+      sb.append("{" + row[0] + ", " + row[1] + ", " + row[2] + "}");
+    }
+    sb.append('}');
+    return sb.toString();
   }
 
   public static List<Puzzle8Move> solve(Puzzle8 puzzle) {
     Puzzle8Graph graph = new Puzzle8Graph();
-    return new Puzzle8GraphSearch(graph, puzzle, Puzzle8.solved()).getShortestPath();
+    List<Edge> path = new Puzzle8GraphSearch(graph, puzzle, Puzzle8.solved()).getShortestPath();
+    Log.debug(path);
+    return map(path, e -> e.move);
   }
 
   public static Puzzle8 solved() {
@@ -72,9 +93,8 @@ public class Puzzle8 {
   }
 
   public static void main(String... args) {
-    Puzzle8 puzzle = new Puzzle8(new int[][] { { 2, 5, 6 }, { 4, 1, 7 }, { 3, 8, 0 } });
+    Puzzle8 puzzle = new Puzzle8(new int[][] { { 5, 7, 1 }, { 6, 4, 8 }, { 2, 3, 0 } });
     List<Puzzle8Move> solution = solve(puzzle);
 
-    Log.debug(solution);
   }
 }

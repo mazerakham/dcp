@@ -8,14 +8,17 @@ import java.util.Queue;
 
 import com.google.common.base.Objects;
 
+import ox.Log;
+import ox.XList;
+
 public class Puzzle8GraphSearch {
 
   private final Puzzle8Graph graph;
   private final Puzzle8 start;
   private final Puzzle8 finish;
   private final Map<Puzzle8, Integer> distances = new HashMap<>();
-  private final Map<Puzzle8, Puzzle8Move> incomingMoves = new HashMap<>();
-  private final Queue<Puzzle8Move> queue = new ArrayDeque<>();
+  private final Map<Puzzle8, Edge> incomingEdges = new HashMap<>();
+  private final Queue<Edge> queue = new ArrayDeque<>();
 
   private Puzzle8 current;
 
@@ -25,39 +28,67 @@ public class Puzzle8GraphSearch {
     this.finish = finish;
   }
 
-  public List<Puzzle8Move> getShortestPath() {
+  public List<Edge> getShortestPath() {
     current = start;
     distances.put(current, 0);
+    int i = 0;
 
     // As we enter a loop, current will be set to the node we are considering. We have already noted its distance from
     // the start, and its optimal incoming move.
     while (!Objects.equal(current, finish)) {
-      // Get edges emanating from current. Discard any which are *strictly worse*.
-      List<Puzzle8Move> legalMoves = graph.getEdges(current);
+      i++;
+      // Get edges emanating from current.
+      List<Edge> edges = graph.getEdges(current);
 
       // Insert the edges into the priority queue by their value. The value of an edge (small is 'good') is defined to
       // be its weight (1) plus the heuristic of the destination.
       int currentValue = distances.get(current);
-      for (Puzzle8Move move : legalMoves) {
-        Puzzle8 nextPuzzle = current.makeMove(move);
+      for (Edge edge : edges) {
+        Puzzle8 nextPuzzle = current.makeMove(edge.move);
         if (distances.containsKey(nextPuzzle) && distances.get(nextPuzzle) <= currentValue + 1) {
           continue;
         } else {
           distances.put(nextPuzzle, currentValue + 1);
-          queue.add(move);
+          incomingEdges.put(nextPuzzle, edge);
+          queue.add(edge);
         }
       }
 
-      // Select the best edge. Traverse it, noting the distance from the terminus to the start, as well as its incoming
-      // move.
-      Puzzle8Move nextMove = queue.remove();
-
+      // Select the best edge.
+      Edge nextEdge = getBestEdge();
+      current = nextEdge.b;
     }
+
+    Log.debug("Took %d steps to complete algorithm.", i);
     return backtrack();
   }
 
-  private List<Puzzle8Move> backtrack() {
-    throw new UnsupportedOperationException();
+  // Loop through moves and return the first one which is an optimal move to the target node.
+  private Edge getBestEdge() {
+    int i = 0;
+    do {
+      Edge candidate = queue.remove();
+      Edge best = incomingEdges.get(candidate.b);
+      if (candidate.equals(best)) {
+        return candidate;
+      }
+      if (i++ > 1000) {
+        throw new RuntimeException("Seems to be broken");
+      }
+    } while (true);
+  }
+
+  private List<Edge> backtrack() {
+    Puzzle8 current = finish;
+    XList<Edge> ret = new XList<>();
+    while (current != start) {
+      Edge edge = incomingEdges.get(current);
+      ret.add(edge);
+      current = edge.a;
+    }
+    ret = ret.reverse();
+    ret.forEach(Edge::prettyPrint);
+    return ret;
   }
 
 }

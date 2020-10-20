@@ -12,4 +12,9 @@ public class Puzzle8Move {
     this.a = a;
     this.b = b;
   }
+
+  @Override
+  public String toString() {
+    return "[" + a.x + "," + a.y + "]";
+  }
 }
