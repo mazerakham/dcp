@@ -7,7 +7,8 @@ import java.util.List;
 import com.google.common.base.Objects;
 
 import ox.Log;
-import ox.XList;
+import ox.x.XList;
+
 
 public class Puzzle8 {
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-import ox.XList;
+import ox.x.XList;
 
 public class Tile {
 

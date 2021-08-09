@@ -5,7 +5,7 @@ import ox.Log;
 public class CollatzBinaryInvestigation {
 
   public static void main(String... args) {
-    int curr = 27;
+    int curr = 97;
     Log.debug("Doing collatz in binary starting at: " + curr);
 
     Log.debug(Integer.toBinaryString(curr));

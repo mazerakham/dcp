@@ -32,7 +32,7 @@ public class ReverseCollatz {
   }
 
   public static void main(String... args) {
-    List<Long> result = ReverseCollatz.run(1360L * 2);
+    List<Long> result = ReverseCollatz.run(18518L * 2);
     Log.debug(printList(result));
   }
 }
