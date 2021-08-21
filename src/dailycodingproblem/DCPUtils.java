@@ -3,6 +3,9 @@ package dailycodingproblem;
 import static com.google.common.base.Preconditions.checkState;
 
 import java.util.Collection;
+import java.util.function.BiFunction;
+
+import ox.Log;
 
 public class DCPUtils {
 
@@ -18,24 +21,27 @@ public class DCPUtils {
     });
     sb.delete(sb.length() - 2, sb.length());
     sb.append(']');
+    String ret = sb.toString();
+    Log.debug(ret);
     return sb.toString();
   }
 
-  public static long max(Long... numbers) {
-    checkState(numbers.length > 0);
-    long ret = Long.MIN_VALUE;
-    for (long num : numbers) {
-      ret = Math.max(ret, num);
-    }
-    return ret;
+  public static long min(Long[] numbers) {
+    return min((a,b) -> a - b, numbers);
   }
-
-  public static long min(Iterable<Long> numbers) {
-    checkState(numbers.iterator().hasNext());
-    long ret = Long.MAX_VALUE;
-    for (long num : numbers) {
-      ret = Math.min(ret, num);
+  
+  public static long max(Long[] numbers) {
+    return min((a,b) -> b - a, numbers);
+  }
+  
+  private static long min(BiFunction<Long,Long,Long> comparator, Long[] numbers) {
+    checkState(numbers.length > 0);
+    Long currMin = numbers[0];
+    for (int i = 1; i < numbers.length; i++) {
+      if (comparator.apply(currMin, numbers[i]) < 0) {
+        currMin = numbers[i];
+      }
     }
-    return ret;
+    return currMin;
   }
 }

@@ -24,7 +24,7 @@ public class CollatzTree {
         Log.debug("%s", currentList);
       }
       sizes.add(currentList.size());
-      minima.add(DCPUtils.min(currentList));
+      minima.add(DCPUtils.min((Long[]) currentList.toArray()));
       nextList = new ArrayList<>();
       for (Long num : currentList) {
         if (num % 3 == 0 || num > maxValueCutoff) {

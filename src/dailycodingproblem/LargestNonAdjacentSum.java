@@ -26,7 +26,7 @@ public class LargestNonAdjacentSum {
     while (currentIndex < nums.size()) {
       long lastFreeMax = freeMax;
       freeMax = encumberedMax;
-      encumberedMax = max(lastFreeMax, lastFreeMax + nums.get(currentIndex), encumberedMax);
+      encumberedMax = max(new Long[] {lastFreeMax, lastFreeMax + nums.get(currentIndex), encumberedMax});
       currentIndex++;
     }
 
