@@ -1,5 +1,8 @@
 package dailycodingproblem;
 
+import static dailycodingproblem.DCPUtils.printList;
+
+import ox.Log;
 import ox.x.XList;
 
 /**
@@ -21,9 +24,10 @@ public class NumberLineJumps {
     return (int) Math.ceil((-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a));
   }
   
-  public static XList<Integer> getShortestPath(int n) {
+  public static XList<Integer> getShortestPathNaive(int n, int startingStep) {
     XList<Integer> ret = XList.create();
-    int stepSize = f(n);
+    // int stepSize = f(n);
+    int stepSize = startingStep;
     int position = n;
     while (stepSize > 0) {
       ret.add(0, position);
@@ -34,10 +38,30 @@ public class NumberLineJumps {
       }
       stepSize--;
     }
+    
+    ret.add(0, position);
     return ret;
   }
   
   public static void main(String... args) {
-    DCPUtils.printList(getShortestPath(100));
+    XList<Integer> js = XList.create();
+    OUTER:
+    for (int n = 1; n <= 1000; n++) {
+      for (int j = 0; true; j++) {
+        XList<Integer> shortestPathCandidate = getShortestPathNaive(n, f(n) + j);
+        // printList(shortestPathCandidate);
+        if (shortestPathCandidate.get(0) == 0) {
+          // Log.debug("Solved with j = " + j + " greater than the conjectured minimum.");
+          Log.debug("%d -> %d", n, j);
+          js.add(j);
+          if (j > 2) {
+            Log.debug("Exceptional case.");
+          }
+          continue OUTER;
+        }
+      }
+    }
+    
+    printList(js);
   }
 }
