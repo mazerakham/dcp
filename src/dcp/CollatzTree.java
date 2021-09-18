@@ -1,4 +1,4 @@
-package dailycodingproblem;
+package dcp;
 
 import static com.google.common.base.Preconditions.checkState;
 

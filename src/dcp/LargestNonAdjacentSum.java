@@ -1,7 +1,7 @@
-package dailycodingproblem;
+package dcp;
 
-import static dailycodingproblem.DCPUtils.max;
-import static dailycodingproblem.DCPUtils.printList;
+import static dcp.DCPUtils.max;
+import static dcp.DCPUtils.printList;
 
 import java.util.List;
 

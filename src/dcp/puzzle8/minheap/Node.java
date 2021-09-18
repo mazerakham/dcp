@@ -1,4 +1,4 @@
-package dailycodingproblem.puzzle8.minheap;
+package dcp.puzzle8.minheap;
 
 public class Node<T> {
 

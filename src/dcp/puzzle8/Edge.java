@@ -1,4 +1,4 @@
-package dailycodingproblem.puzzle8;
+package dcp.puzzle8;
 
 import ox.Log;
 

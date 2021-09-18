@@ -1,4 +1,4 @@
-package dailycodingproblem;
+package dcp;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package dailycodingproblem;
+package dcp;
 
 import ox.Log;
 

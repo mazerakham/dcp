@@ -1,6 +1,6 @@
-package dailycodingproblem;
+package dcp;
 
-import static dailycodingproblem.DCPUtils.printList;
+import static dcp.DCPUtils.printList;
 
 import ox.Log;
 import ox.x.XList;

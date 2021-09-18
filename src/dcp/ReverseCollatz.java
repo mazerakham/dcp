@@ -1,7 +1,7 @@
-package dailycodingproblem;
+package dcp;
 
 import static com.google.common.base.Preconditions.checkState;
-import static dailycodingproblem.DCPUtils.printList;
+import static dcp.DCPUtils.printList;
 
 import java.util.ArrayList;
 import java.util.List;

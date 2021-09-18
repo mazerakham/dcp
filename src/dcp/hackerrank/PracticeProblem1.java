@@ -1,4 +1,4 @@
-package dailycodingproblem.hackerrank;
+package dcp.hackerrank;
 
 import java.util.ArrayList;
 import java.util.Comparator;
