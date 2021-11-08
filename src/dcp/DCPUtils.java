@@ -1,15 +1,17 @@
 package dcp;
 
-import static com.google.common.base.Preconditions.checkState;
-
 import java.util.Collection;
 import java.util.function.BiFunction;
 
-import ox.Log;
+import ox.x.XList;
 
 public class DCPUtils {
 
-  public static <T> String printList(Collection<T> items) {
+  public static <T> String toString(T[] items) {
+    return toString(XList.of(items));
+  }
+
+  public static <T> String toString(Collection<T> items) {
     if (items.size() == 0) {
       return "[]";
     }
@@ -22,26 +24,26 @@ public class DCPUtils {
     sb.delete(sb.length() - 2, sb.length());
     sb.append(']');
     String ret = sb.toString();
-    Log.debug(ret);
     return sb.toString();
   }
 
-  public static long min(Long[] numbers) {
-    return min((a,b) -> a - b, numbers);
+  public static Integer sum(Integer[] numbers) {
+    return DCPUtils.<Integer, Integer>reduce(numbers, 0, (a, b) -> a + b);
   }
-  
+
+  public static Long min(Long[] numbers) {
+    return reduce(numbers, Long.MAX_VALUE, (a, b) -> Math.min(a, b));
+  }
+
   public static long max(Long[] numbers) {
-    return min((a,b) -> b - a, numbers);
+    return reduce(numbers, Long.MIN_VALUE, (a,b) -> Math.max(a, b));
   }
-  
-  private static long min(BiFunction<Long,Long,Long> comparator, Long[] numbers) {
-    checkState(numbers.length > 0);
-    Long currMin = numbers[0];
-    for (int i = 1; i < numbers.length; i++) {
-      if (comparator.apply(currMin, numbers[i]) < 0) {
-        currMin = numbers[i];
-      }
+
+  private static <S, T> T reduce(S[] items, T initialVal, BiFunction<T, S, T> reducer) {
+    T current = initialVal;
+    for (S item : items) {
+      current = reducer.apply(current, item);
     }
-    return currMin;
+    return current;
   }
 }

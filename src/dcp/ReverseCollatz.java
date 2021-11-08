@@ -1,7 +1,6 @@
 package dcp;
 
 import static com.google.common.base.Preconditions.checkState;
-import static dcp.DCPUtils.printList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +32,6 @@ public class ReverseCollatz {
 
   public static void main(String... args) {
     List<Long> result = ReverseCollatz.run(18518L * 2);
-    Log.debug(printList(result));
+    Log.debug(DCPUtils.toString(result));
   }
 }

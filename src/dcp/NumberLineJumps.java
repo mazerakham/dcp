@@ -1,7 +1,5 @@
 package dcp;
 
-import static dcp.DCPUtils.printList;
-
 import ox.Log;
 import ox.x.XList;
 
@@ -62,6 +60,6 @@ public class NumberLineJumps {
       }
     }
     
-    printList(js);
+    Log.debug(DCPUtils.toString(js));
   }
 }

@@ -1,7 +1,6 @@
 package dcp;
 
 import static dcp.DCPUtils.max;
-import static dcp.DCPUtils.printList;
 
 import java.util.List;
 
@@ -36,8 +35,7 @@ public class LargestNonAdjacentSum {
   public static void main(String... args) {
     List<Long> example = Lists.newArrayList(-1L, 2L, 16L, 4L, 6L, 2L, 5L, 10L);
     long result = run(example);
-
-    Log.debug(printList(example));
+    Log.debug(DCPUtils.toString(example));
     Log.debug("result: %d", result);
   }
 }

@@ -1,7 +1,5 @@
 package dcp;
 
-import static dcp.DCPUtils.printList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,13 +36,13 @@ public class ProductArray {
   public static void testProductArray(Integer... ints) {
     List<Integer> intsList = Lists.<Integer>newArrayList(ints);
     List<Integer> productArray = ProductArray.computeProductArray(Lists.<Integer>newArrayList(ints));
-    Log.debug("Given %s", printList(intsList));
-    Log.debug("Result: %s", printList(productArray));
+    Log.debug("Given %s", DCPUtils.toString(intsList));
+    Log.debug("Result: %s", DCPUtils.toString(productArray));
   }
 
   public static void main(String... args) {
-    Log.debug(printList(Lists.newArrayList(1, 2, 3)));
-    Log.debug(printList(Lists.newArrayList()));
+    Log.debug(DCPUtils.toString(Lists.newArrayList(1, 2, 3)));
+    Log.debug(DCPUtils.toString(Lists.newArrayList()));
     testProductArray(1, 2, 3, 4, 5);
   }
 }
