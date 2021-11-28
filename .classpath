@@ -2,7 +2,21 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="/ox/lib/guava-27.0.1-jre.jar" sourcepath="/ox/open_src/guava-27.0.1.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ox"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/apiguardian-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/junit-jupiter-api-5.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/junit-jupiter-engine-5.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/junit-jupiter-params-5.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/junit-platform-commons-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/junit-platform-engine-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/junit-platform-launcher-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/junit/opentest4j-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/byte-buddy-1.9.10.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/byte-buddy-agent-1.9.10.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/h2-1.4.200.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/jsonassert-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/test/test/mockito-core-3.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
