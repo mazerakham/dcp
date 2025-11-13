@@ -9,11 +9,20 @@ This repository contains Python solutions to Daily Coding Problems.
 
 ## Setup
 
+### Create Virtual Environment (Recommended)
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
 ### Install Dependencies
 
 ```bash
 pip install -r requirements-dev.txt
 ```
+
+**Note:** If using VS Code, the virtual environment will be automatically detected and used for testing.
 
 ## Running Tests
 
