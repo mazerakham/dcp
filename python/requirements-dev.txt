@@ -1,0 +1,6 @@
+# Development-only dependencies
+-r requirements.txt
+
+# Additional dev tools
+ipython>=8.12.0
+ipdb>=0.13.13

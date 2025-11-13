@@ -1,0 +1,50 @@
+{
+    // Python settings
+    "python.defaultInterpreterPath": "${workspaceFolder}/python/venv/bin/python",
+
+    // Testing configuration
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "python/tests",
+        "-v",
+        "--tb=short"
+    ],
+    "python.testing.cwd": "${workspaceFolder}/python",
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+
+    // Linting
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
+
+    // Formatting
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+
+    // Auto-complete and IntelliSense
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+
+    // Terminal
+    "terminal.integrated.cwd": "${workspaceFolder}/python",
+
+    // File associations
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.pytest_cache": true,
+        "**/.coverage": true,
+        "**/htmlcov": true
+    },
+
+    // Test Explorer UI
+    "testExplorer.useNativeTesting": true
+}

@@ -1,0 +1,50 @@
+{
+    // VS Code debugger configuration
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/python"
+            }
+        },
+        {
+            "name": "Python: Debug Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "-v",
+                "--tb=short"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/python"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: Debug Current Test File",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "${file}",
+                "-v",
+                "--tb=short"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/python",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/python"
+            },
+            "justMyCode": false
+        }
+    ]
+}

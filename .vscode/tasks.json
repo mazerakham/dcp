@@ -1,0 +1,96 @@
+{
+    // VS Code tasks for common operations
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run All Python Tests",
+            "type": "shell",
+            "command": "pytest",
+            "args": [
+                "-v",
+                "--tb=short"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Python Tests with Coverage",
+            "type": "shell",
+            "command": "pytest",
+            "args": [
+                "--cov=reverse_polish",
+                "--cov-report=term-missing",
+                "--cov-report=html",
+                "-v"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Format Python Code (Black)",
+            "type": "shell",
+            "command": "black",
+            "args": [
+                "."
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint Python Code (Flake8)",
+            "type": "shell",
+            "command": "flake8",
+            "args": [
+                "reverse_polish",
+                "tests"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Type Check (mypy)",
+            "type": "shell",
+            "command": "mypy",
+            "args": [
+                "reverse_polish"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/python"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
